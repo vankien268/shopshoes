@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateWardsTable extends Migration
+class AddColumnStatusToRepositoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,8 @@ class CreateWardsTable extends Migration
      */
     public function up()
     {
-        Schema::create('wards', function (Blueprint $table) {
-            $table->id();
-            $table->string("name");
-            $table->bigInteger("district_id");
-            $table->softDeletes();
-            $table->timestamps();
+        Schema::table('repositories', function (Blueprint $table) {
+            $table->string("status1");
         });
     }
 
@@ -29,6 +25,8 @@ class CreateWardsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('wards');
+        Schema::table('repositories', function (Blueprint $table) {
+            $table->dropColumn("status1");
+        });
     }
 }

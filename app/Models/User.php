@@ -49,4 +49,20 @@ class User extends Authenticatable
      */
     public const VERIFIED = 1; // Đã xác thực
     public const UNVERIFIED = 0; // Chưa xác thực
+
+
+    /**
+     * RELATIONSHIP
+     */
+    // n - n: Vai trò
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class);
+    }
+
+    // 1 - n: Địa chỉ
+    public function addresses()
+    {
+        return $this->hasMany(Address::class);
+    }
 }

@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Vagrant;
 use Illuminate\Database\Seeder;
 
 class VagrantSeeder extends Seeder
@@ -13,6 +14,17 @@ class VagrantSeeder extends Seeder
      */
     public function run()
     {
-        //
+        $vagrants = [
+            [
+                "name" => "Kích thước",
+                "code" => "size"
+            ],
+            [
+                "name" => "Màu sắc",
+                "code" => "color"
+            ],
+        ];
+
+        Vagrant::insert($vagrants);
     }
 }
