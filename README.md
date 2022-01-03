@@ -1,5 +1,39 @@
 # SHOPSHOES - Shop bán giày lớn nhất Vịnh Bắc Bộ
 
+### CONVENTION
+- Quy ước tên file:
+  + Model: 
+     - Tên số ít
+     - Viết hoa chữ cái đầu (CapitalizeCase)
+     - Ví dụ: `Category, ProductVagrant`
+  + Controller:
+    - Luôn có chữ controller ở cuối
+    - Đặt tên theo cụm chức năng hoặc Tên của model nào đó nếu thực hiện CRUD(Thêm, sửa, xóa, xem(đọc))
+    - Ví dụ: `CategoryController, ProductController`
+  + View(blade):
+    - Viết theo resource controller hoặc theo route name(index,edit,show,update,destroy,restore,create,store,...)
+    - phân cách nhau bằng dấu `-`
+    - viết thường(normal-case)
+    - Ví dụ: `product-vagrant.blade.php,...`
+- Quy ước route:
+`https://viblo.asia/p/restful-api-trong-laravel-cho-nguoi-moi-bat-dau-ByEZkNaqKQ0`
+  + WEB:
+    - viết theo resful api (/,show/{id},edit/{id},update/{id},...) hoặc dùng static method `resource`
+    ```php
+    Route::resource("...",...);
+    ```
+  + API:
+- Vấn đề về `status` trong source code: Tránh trường hợp sử dụng các key-value khác nhau, value khác nhau hoặc do thay đổi requirement của project cũng như tránh việc `hardcode` ta nên sử dụng các `constant` (hằng số) để khai báo các đối tượng này
+  + Ví dụ:
+  ```php
+  // Trong project ta sử dụng 2 `status` cho user là : 1 - đã xác thực và 0 - chưa xác thực.
+  // Thì trong project tránh việc sử dụng tràn lan các ký dự 0 hoặc 1 hoặc tránh việc debug khó khăn cũng như việc
+  // người khác đọc code khó khăn ta sẽ khai báo 2 contant mang giá trị của 0 và 1
+  public const VERIFIED = 1;// đã xác thực
+  public const UNVERIFIED = 0;// chưa xác thực
+  // Tại các nơi cần check điều kiện ta sẽ gọi tới constant này thay vì giá trị 0 và 1
+  ```
+
 ### Chức năng
 
 #### Client
